@@ -1,6 +1,3 @@
-import React from "react";
-import Title from "Components/title";
-
 export const validateInput = text => {
     const input = text;
     let isValid = true;
@@ -16,20 +13,4 @@ export const validateInput = text => {
     }
 
     return { isValid, message };
-};
-
-export const validateField = (
-    text,
-    setElement,
-    className = "title-validate"
-) => {
-    const { isValid, message } = validateInput(text);
-    isValid
-        ? setElement(null)
-        : setElement(
-              <Title className={className} typing={true}>
-                  {message}
-              </Title>
-          );
-    return isValid;
 };

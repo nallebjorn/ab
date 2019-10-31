@@ -3,37 +3,51 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Input from "Components/input";
 import Button from "Components/button";
-import { validateField } from "Utils/validation";
+import Title from "Components/title";
+import { validateField, validateInput } from "Utils/validation";
 import { setHeaderTitle } from "Actions/actions";
 
 const LoginPage = () => {
-    const [login, setLogin] = useState("");
-    const [loginValidation, setLoginValidation] = useState(null);
-    const [password, setPassword] = useState("");
-    const [passwordValidation, setPasswordValidation] = useState(null);
+    const [login, setLogin] = useState({
+        input: "",
+        isValid: true,
+        message: ""
+    });
+    const [password, setPassword] = useState({
+        input: "",
+        isValid: true,
+        message: ""
+    });
     const dispatch = useDispatch();
 
     const isLogged = useSelector(state => state.user.isLogged);
     if (isLogged) return <Redirect to="/" />;
+
+    const {
+        input: inputLogin,
+        message: messageLogin,
+        isValid: loginValid
+    } = login;
+    const {
+        input: inputPassword,
+        message: messagePassowrd,
+        isValid: passwordValid
+    } = password;
     const onSubmitHandler = e => {
         e.preventDefault();
-        const isLoginValid = validateField(login, setLoginValidation);
-        const isPasswordValid = validateField(password, setPasswordValidation);
-        if (isLoginValid && isPasswordValid) {
-            dispatch(setHeaderTitle(`Welcome to website, ${login}.`));
-            // setPasswordValidation(null);
-            // setLoginValidation(null);
+        setLogin({ ...login, ...validateInput(inputLogin) });
+        setPassword({ ...password, ...validateInput(inputPassword) });
+        if (loginValid && passwordValid) {
+            dispatch(setHeaderTitle(`Welcome to website, ${inputLogin}.`));
         }
-        // isLoginValid ? setLoginValidation(null) : null;
-        // isPasswordValid ? setPasswordValidation(null) : null;
     };
 
     const onLoginChangeHandler = e => {
-        setLogin(e.target.value.trim());
+        setLogin({ ...login, input: e.target.value.trim() });
     };
 
     const onPasswordChangeHandler = e => {
-        setPassword(e.target.value.trim());
+        setPassword({ ...password, input: e.target.value.trim() });
     };
 
     return (
@@ -42,18 +56,30 @@ const LoginPage = () => {
                 <Input
                     className="login-form__input"
                     onChange={onLoginChangeHandler}
-                    value={login}
+                    value={inputLogin}
                     placeholder="username"
                 />
-                {loginValidation}
+                {loginValid ? (
+                    ""
+                ) : (
+                    <Title className="title-validate" typing={true}>
+                        {messageLogin}
+                    </Title>
+                )}
                 <Input
                     className="login-form__input"
                     onChange={onPasswordChangeHandler}
-                    value={password}
-                    placeholder="password"
+                    value={inputPassword}
                     type="password"
+                    placeholder="password"
                 />
-                {passwordValidation}
+                {passwordValid ? (
+                    ""
+                ) : (
+                    <Title className="title-validate" typing={true}>
+                        {messagePassowrd}
+                    </Title>
+                )}
                 <Button className="login-form__button">Login</Button>
             </form>
         </section>

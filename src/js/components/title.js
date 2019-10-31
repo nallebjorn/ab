@@ -14,7 +14,6 @@ const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
         } else {
             setTitle(children);
         }
-        console.log(children)
         return () => {
             clearInterval(interval);
         };
