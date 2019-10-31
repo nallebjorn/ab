@@ -21,9 +21,8 @@ const LoginPage = () => {
         const isPasswordValid = validateField(password, setPasswordValidation);
         if (isLoginValid && isPasswordValid) {
             dispatch(setHeaderTitle(`Welcome to website, ${login}.`));
-            setPasswordValidation(null);
-            setLoginValidation(null);
-            return;
+            // setPasswordValidation(null);
+            // setLoginValidation(null);
         }
         // isLoginValid ? setLoginValidation(null) : null;
         // isPasswordValid ? setPasswordValidation(null) : null;

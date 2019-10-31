@@ -17,7 +17,6 @@ const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
         console.log(children)
         return () => {
             clearInterval(interval);
-            console.log("cleanup");
         };
     }, [children]);
 

@@ -25,7 +25,7 @@ export const validateField = (
 ) => {
     const { isValid, message } = validateInput(text);
     isValid
-        ? null
+        ? setElement(null)
         : setElement(
               <Title className={className} typing={true}>
                   {message}

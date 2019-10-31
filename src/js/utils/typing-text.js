@@ -3,7 +3,6 @@ export default (text, setText, duration = 200) => {
     let counter = 0;
     let newTitle = "";
     let i = setInterval(() => {
-        console.log("lol")
         newTitle += temp[counter];
         setText(newTitle);
         counter++;
