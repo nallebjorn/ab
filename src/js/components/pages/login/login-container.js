@@ -1,16 +1,14 @@
 import React from "react";
-import Button from "Components/button";
+import Form from "./login-form";
 
 const LoginPage = () => {
-    const onSubmitHandler = e => {
-        e.preventDefault();
+    const onSubmitHandler =  values => {
+        console.log(values);
     };
 
     return (
-        <section className="login-section" onSubmit={onSubmitHandler}>
-            <form className="login-form">
-                <Button className="login-form__button">Login</Button>
-            </form>
+        <section className="login-section">
+            <Form onSubmit={onSubmitHandler} />
         </section>
     );
 };

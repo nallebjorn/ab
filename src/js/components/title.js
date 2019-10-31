@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
+const Title = ({ children, className, typing, typeInterval, ...attrs }) => {
     const classes = classnames("title", className);
     const [title, setTitle] = useState("");
     const [interval, setNewInterval] = useState(0);
@@ -19,7 +19,7 @@ const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
                 if (counter === temp.length) {
                     clearInterval(i);
                 }
-            }, typeInverval);
+            }, typeInterval);
             setNewInterval(i);
         } else {
             setTitle(children);
@@ -39,14 +39,14 @@ const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
 Title.defaultProps = {
     children: " ",
     typing: false,
-    typeInverval: 150
+    typeInterval: 150
 };
 
 Title.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     typing: PropTypes.bool,
-    typeInverval: PropTypes.number
+    typeInterval: PropTypes.number
 };
 
 export default Title;

@@ -4,7 +4,7 @@ import Title from "./../title";
 import Link from "./../link";
 
 const Header = () => {
-    const titleFromState = useSelector(state => state.header.title);
+    const titleFromState = useSelector(state => state.app.header.title);
     return (
         <header className="header">
             <Title className="title-header" typing={true}>

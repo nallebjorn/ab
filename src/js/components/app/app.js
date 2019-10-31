@@ -5,6 +5,8 @@ import Routing from "./../routing";
 import Header from "./../header";
 
 const App = () => {
+    // const state = useSelector(state => state);
+    // console.log(state);
     return (
         <React.Fragment>
             <Header />

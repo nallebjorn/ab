@@ -1,16 +1,12 @@
-import { createStore } from 'redux';
-import reducer from './../reducers/reducer';
+import { createStore, combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
+import app from "./../reducers/reducer";
 
-const initialState = {
-    header: {
-        title: "Login to website."
-    },
-    user: {
-        isLogged: false, 
-        name: ""
-    }
-}
+const rootReducer = combineReducers({
+    app,
+    form: formReducer
+});
 
-const store = createStore(reducer, initialState);
+const store = createStore(rootReducer);
 
 export default store;
