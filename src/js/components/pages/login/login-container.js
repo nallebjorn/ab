@@ -21,17 +21,20 @@ const LoginPage = () => {
         const isPasswordValid = validateField(password, setPasswordValidation);
         if (isLoginValid && isPasswordValid) {
             dispatch(setHeaderTitle(`Welcome to website, ${login}.`));
+            setPasswordValidation(null);
+            setLoginValidation(null);
+            return;
         }
+        // isLoginValid ? setLoginValidation(null) : null;
+        // isPasswordValid ? setPasswordValidation(null) : null;
     };
 
     const onLoginChangeHandler = e => {
         setLogin(e.target.value.trim());
-        setLoginValidation(null);
     };
 
     const onPasswordChangeHandler = e => {
         setPassword(e.target.value.trim());
-        setPasswordValidation(null);
     };
 
     return (
