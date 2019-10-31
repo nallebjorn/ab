@@ -25,6 +25,12 @@
             animation: gradientBG 15s ease infinite;
         }
     }
+
+    &-validate {
+        font-size: rem(22);
+        color: $danger-color;
+        text-shadow: none;
+    }
 }
 
 .link {

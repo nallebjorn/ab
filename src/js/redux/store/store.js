@@ -3,7 +3,7 @@ import reducer from './../reducers/reducer';
 
 const initialState = {
     header: {
-        title: "Login to website"
+        title: "Login to website."
     },
     user: {
         isLogged: false, 
