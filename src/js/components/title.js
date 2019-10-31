@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import typeText from "Utils/typing-text";
 
 const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
     const classes = classnames("title", className);
@@ -10,7 +9,18 @@ const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
     useEffect(() => {
         if (typing && typeof children === "string") {
             clearInterval(interval);
-            setNewInterval(typeText(children, setTitle, typeInverval));
+            let temp = [...children];
+            let counter = 0;
+            let newTitle = "";
+            let i = setInterval(() => {
+                newTitle += temp[counter];
+                setTitle(newTitle);
+                counter++;
+                if (counter === temp.length) {
+                    clearInterval(i);
+                }
+            }, typeInverval);
+            setNewInterval(i);
         } else {
             setTitle(children);
         }
@@ -27,7 +37,7 @@ const Title = ({ children, className, typing, typeInverval, ...attrs }) => {
 };
 
 Title.defaultProps = {
-    children: "Title",
+    children: " ",
     typing: false,
     typeInverval: 150
 };
