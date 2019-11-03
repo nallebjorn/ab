@@ -5,9 +5,10 @@ const initialState = {
         title: "Login to website."
     },
     user: {
-        isLogged: false,
-        name: ""
-    }
+        isLogged: false
+    },
+    loading: false,
+    error: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,31 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 header: { title: payload }
             };
+        case Actions.AUTHENTICATE_USER_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                error: false
+            };
+        case Actions.AUTHENTICATE_USER_SUCCESS:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    ...payload,
+                    isLogged: true
+                },
+                loading: false,
+                error: false
+            };
+        case Actions.AUTHENTICATE_USER_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                errorMessage: payload
+            };
+
         default:
             return state;
     }

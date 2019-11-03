@@ -5,12 +5,16 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./js/redux/store/store";
 import App from "./js/components/app";
+import UserContext from "Utils/user-service-context";
+import UserService from "./js/services/user-service";
 
 const Idx = () => {
     return (
         <Provider store={store}>
             <Router>
-                <App />
+                <UserContext.Provider value={new UserService()}>
+                    <App />
+                </UserContext.Provider>
             </Router>
         </Provider>
     );

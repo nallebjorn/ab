@@ -13,7 +13,7 @@ let LoginForm = ({ handleSubmit, onSubmit }) => {
         onSubmit(values);
     });
     return (
-        <form className="login-form" onSubmit={onSubmitHandler}>
+        <form className="login-form" onSubmit={onSubmitHandler} autoComplete="off" >
             <Field
                 name="username"
                 component={renderField}

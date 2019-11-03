@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Form from "./login-form";
-import {setHeaderTitle} from 'Actions/actions'
-
+import UserContext from "Utils/user-service-context";
+import { setHeaderTitle, login } from "Actions/actions";
 
 const LoginPage = () => {
     const dispatch = useDispatch();
-    const onSubmitHandler =  ({username, password}) => {
-        dispatch(setHeaderTitle(`Welcome to site, ${username}.`))
+    const service = useContext(UserContext);
+    const onSubmitHandler = ({ username, password }) => {
+        const user = {
+            username,
+            password
+        };
+        dispatch(login(user, service));
+        // setHeaderTitle(`Welcome to site, ${username}.`)
     };
 
     return (
