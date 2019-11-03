@@ -1,0 +1,13 @@
+.admin {
+    &__card {
+        display: flex;
+        flex-wrap: wrap; 
+        &-field {
+            min-width: 150px;
+        }
+    }
+
+    &-section {
+        margin: rem(20);
+    }
+}

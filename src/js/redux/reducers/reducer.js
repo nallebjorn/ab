@@ -1,4 +1,4 @@
-import * as Actions from "Actions/actions";
+import * as Actions from "./../actions/actions";
 
 const initialState = {
     header: {
@@ -14,6 +14,16 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
+        case Actions.USER_LOGINING_OUT:
+            return initialState;
+        case Actions.USER_LOGINING_IN:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    isLogged: true
+                }
+            };
         case Actions.SET_HEADER_TITLE:
             return {
                 ...state,
@@ -30,8 +40,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    ...payload,
-                    isLogged: true
+                    ...payload
                 },
                 loading: false,
                 error: false

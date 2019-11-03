@@ -19,7 +19,6 @@ let LoginForm = ({ handleSubmit, onSubmit }) => {
                 component={renderField}
                 className="login-form__input"
                 placeholder="username"
-                typeInterval={120}
             />
             <Field
                 name="password"
@@ -27,7 +26,6 @@ let LoginForm = ({ handleSubmit, onSubmit }) => {
                 className="login-form__input"
                 type="password"
                 placeholder="password"
-                typeInterval={100}
             />
             <Button className="login-form__button" type="submit">
                 Login

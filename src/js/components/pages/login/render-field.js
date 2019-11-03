@@ -31,7 +31,7 @@ const renderField = ({
 };
 
 renderField.defaultProps = {
-    typing: true,
+    typing: false,
     typeInterval: 200
 };
 

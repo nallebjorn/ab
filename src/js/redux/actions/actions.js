@@ -33,11 +33,25 @@ export const login = (user, service) => async dispatch => {
     dispatch(authenticateUserRequest());
     try {
         const logginedUser = await service.getUser(user);
-        // setTimeout(() => {
-            dispatch(authenticateUserSuccess(logginedUser));
-            dispatch(setHeaderTitle(logginedUser.message));
-        // }, 3000);
+        dispatch(authenticateUserSuccess(logginedUser));
+        if (logginedUser.role) {
+            dispatch(userLoginingIn());
+        }
+        dispatch(setHeaderTitle(logginedUser.message));
     } catch (error) {
         dispatch(authenticateUserFailure(error));
     }
+};
+
+export const USER_LOGINING_OUT = "USER_LOGINING_OUT";
+export const userLoginingOut = () => {
+    return {
+        type: USER_LOGINING_OUT
+    };
+};
+export const USER_LOGINING_IN = "USER_LOGINING_IN";
+export const userLoginingIn = () => {
+    return {
+        type: USER_LOGINING_IN
+    };
 };

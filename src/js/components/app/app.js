@@ -7,12 +7,13 @@ import Loader from "./../loader";
 
 const App = () => {
     const state = useSelector(state => state);
+    const { loading } = useSelector(state => state.app);
     console.log(state);
     return (
         <React.Fragment>
             <Header />
             <div className="container">
-                {state.app.loading ? <Loader /> : <Routing />}
+                {loading ? <Loader /> : <Routing />}
             </div>
         </React.Fragment>
     );
