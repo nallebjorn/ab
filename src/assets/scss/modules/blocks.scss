@@ -50,6 +50,10 @@
         color: $hover-color;
         @include text-shadow;
     }
+
+    &-button {
+        color: $neutral-primary;
+    }
 }
 
 .input {
@@ -78,6 +82,23 @@
     border-radius: 10px;
     padding: rem(8);
     cursor: pointer;
+    border: 2px solid $neutral-placeholder;
+    box-shadow: 0px 0px 5px 3px $shadow;
+    color: $neutral-primary;
+
+    &:focus {
+        background: $input-background;
+        border: 2px solid $neutral-primary;
+        box-shadow: 0 0 5px 6px $shadow;
+    }
+}
+
+.select {
+    text-transform: uppercase;
+    padding: rem(8);
+    font-size: 22px;
+    border-radius: 5px;
+    transition: .7s all;
     border: 2px solid $neutral-placeholder;
     box-shadow: 0px 0px 5px 3px $shadow;
 

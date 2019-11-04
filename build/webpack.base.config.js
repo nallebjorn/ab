@@ -32,6 +32,7 @@ module.exports = {
             Actions: `${PATHS.src}/js/redux/actions`,
             Utils: `${PATHS.src}/js/utils/`,
             Services: `${PATHS.src}/js/services/`,
+            Pages: `${PATHS.src}/js/components/pages/`,
         }
     },
     optimization: {

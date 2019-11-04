@@ -9,6 +9,7 @@ import Manager from "./pages/manager";
 import Provider from "./pages/provider";
 import Logout from "./pages/logout";
 import Profile from "./pages/profile/";
+import AddUser from "./pages/admin/add-user";
 
 const Routing = () => {
     let role = useSelector(state => state.app.user.role);
@@ -20,6 +21,7 @@ const Routing = () => {
             return (
                 <Switch>
                     <Route component={Admin} path="/" exact />
+                    <Route component={AddUser} path="/add-user" exact />
                     <Route component={Login} path="/login" />
                     <Route component={Logout} path="/logout" />
                     <Route component={About} path="/about" />
