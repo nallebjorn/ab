@@ -108,3 +108,8 @@
         box-shadow: 0 0 5px 6px $shadow;
     }
 }
+
+.field-wrapper {
+    display: flex;
+    flex-direction: column;
+}

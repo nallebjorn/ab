@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm, SubmissionError } from "redux-form";
 import Button from "Components/button";
-import { renderField } from "./render-field";
+import { renderField } from "Components/render-field";
 import validate from "Utils/validate-login-form";
 
 let LoginForm = ({ handleSubmit, onSubmit }) => {
