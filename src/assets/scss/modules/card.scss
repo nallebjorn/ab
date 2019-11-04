@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 3px solid $border-color;
+    border-radius: 5px;
+
+    &__field {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-user {
+            padding: rem(8);
+            width: 200px;
+        }
+    }
+
+    &-user {
+        padding: rem(8);
+        margin-top: rem(15);
+    }
+}

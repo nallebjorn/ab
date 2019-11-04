@@ -7,4 +7,9 @@ export default class {
         const body = await axios.post(`${this.__apiBase}/user`, user);
         return body.data;
     };
+
+    getUsers = async () => {
+        const body = await axios.get(`${this.__apiBase}/user`);
+        return body.data;
+    }
 }

@@ -1,52 +1,25 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import User from "./user-card";
 import Title from "Components/title";
+import Button from "Components/button";
+import UserContext from "Utils/user-service-context";
 
 const Admin = () => {
+    const us = useContext(UserContext);
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        us.getUsers().then(setUsers);
+    }, []);
+    console.log(users);
     return (
         <section className="section admin-section">
-            <Title>Users List</Title>
-            <div className="admin__card">
-                <div className="admin__card-field">Username</div>
-                <div className="admin__card-field">Phone</div>
-                <div className="admin__card-field">Email</div>
-                <div className="admin__card-field">Role</div>
-                <div className="admin__card-field">CreateDate</div>
-                <div className="admin__card-field">UpdateDate</div>
-                <div className="admin__card-field">
-                    <button>edit</button>
-                    <button>delete</button>
-                </div>
+            <div className="admin-section__header">
+                <Title className="title-admin">Users List</Title>
+                <Button>Add user</Button>
             </div>
-            {/* <table className="table admin__table">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>CreateDate</th>
-                        <th>UpdateDate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Username</td>
-                        <td>Phone</td>
-                        <td>Email</td>
-                        <td>Role</td>
-                        <td>CreateDate</td>
-                        <td>UpdateDate</td>
-                    </tr>
-                    <tr>
-                        <td>Username</td>
-                        <td>Phone</td>
-                        <td>Email</td>
-                        <td>Role</td>
-                        <td>CreateDate</td>
-                        <td>UpdateDate</td>
-                    </tr>
-                </tbody>
-            </table> */}
+            {users.map(user => (
+                <User key={user.username} user={user} />
+            ))}
         </section>
     );
 };
