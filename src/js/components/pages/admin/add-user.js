@@ -18,7 +18,17 @@ const AddUser = () => {
         surname
     }) => {
         const inputRole = JSON.parse(role);
-        const newUser = { username, password, email, phone, role: inputRole };
+        const newUser = {
+            username,
+            password,
+            email,
+            phone,
+            role: inputRole,
+            address,
+            name,
+            surname
+        };
+        console.log(newUser);
         us.addUser(newUser).then(user => {
             if (user) {
                 dispatch(
@@ -28,29 +38,6 @@ const AddUser = () => {
                 dispatch(setHeaderTitle(`User ${newUser.username} not added.`));
             }
         });
-        if (inputRole.name === "provider") {
-            const newProvider = {
-                user: newUser,
-                address,
-                name,
-                surname
-            };
-            us.addProvider(newProvider).then(provider => {
-                if (provider) {
-                    dispatch(
-                        setHeaderTitle(
-                            `Provider ${newUser.username} added successfully.`
-                        )
-                    );
-                } else {
-                    dispatch(
-                        setHeaderTitle(
-                            `Provider ${newUser.username} not added.`
-                        )
-                    );
-                }
-            });
-        }
     };
     return (
         <section className="section admin-section">

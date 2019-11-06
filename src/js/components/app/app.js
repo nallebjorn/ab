@@ -5,9 +5,9 @@ import Header from "./../header";
 import Loader from "./../loader";
 
 const App = () => {
-    const state = useSelector(state => state);
+    // const state = useSelector(state => state);
     const { loading } = useSelector(state => state.app);
-    console.log(state);
+    // console.log(state);
     return (
         <React.Fragment>
             <Header />

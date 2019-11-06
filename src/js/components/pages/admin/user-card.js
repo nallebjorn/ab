@@ -7,7 +7,8 @@ const UserCard = ({
         phone,
         email,
         role: { name: role }
-    }
+    },
+    onClick
 }) => {
     return (
         <div className="card card-user">
@@ -19,7 +20,7 @@ const UserCard = ({
                 <Button>edit</Button>
             </div>
             <div className="card__field card__field-user">
-                <Button>delete</Button>
+                <Button onClick={onClick}>delete</Button>
             </div>
         </div>
     );

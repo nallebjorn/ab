@@ -32,7 +32,7 @@ export const authenticateUserFailure = error => {
 export const login = (user, service) => async dispatch => {
     dispatch(authenticateUserRequest());
     try {
-        const logginedUser = await service.getUser(user);
+        const logginedUser = await service.authenticateUser(user);
         dispatch(authenticateUserSuccess(logginedUser));
         if (logginedUser.role) {
             dispatch(userLoginingIn());
