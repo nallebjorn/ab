@@ -1,0 +1,76 @@
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+
+        &-close {
+            font-size: 25px;
+            cursor: pointer;
+        }
+    }
+
+    &__body {
+        text-align: center;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__window {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: $neutral-placeholder;
+        min-height: 200px;
+        width: 300px;
+        border-radius: 10px;
+        border: 2px solid $border-color;
+        animation: resize .5s;
+
+        &-wrapper {
+            padding: 10px;
+            opacity: 0;
+            animation: fadein .5s ease-in .5s;
+            animation-fill-mode: forwards;
+            min-height: 200px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+}
+
+@keyframes resize {
+    from {
+        height: 0;
+        width: 0;
+    }
+
+    to {
+        height: auto;
+        width: 300px;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1;
+    }
+}

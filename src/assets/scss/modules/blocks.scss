@@ -38,6 +38,10 @@
         }
     }
 
+    &-modal {
+        font-size: 22px;
+    }
+
 }
 
 .link {
@@ -51,9 +55,7 @@
         @include text-shadow;
     }
 
-    &-button {
-        color: $neutral-primary;
-    }
+
 }
 
 .input {
@@ -86,10 +88,19 @@
     box-shadow: 0px 0px 5px 3px $shadow;
     color: $neutral-primary;
 
-    &:focus {
+    &:focus,
+    &:hover {
         background: $input-background;
         border: 2px solid $neutral-primary;
         box-shadow: 0 0 5px 6px $shadow;
+    }
+
+    &-link {
+        color: $neutral-primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
     }
 }
 

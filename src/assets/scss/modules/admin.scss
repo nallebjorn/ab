@@ -1,9 +1,14 @@
 .admin {
     &-section {
         margin: rem(20) 0;
+
         &__header {
             display: flex;
             justify-content: space-between;
+
+            a {
+                font-weight: 500;
+            }
         }
     }
 }

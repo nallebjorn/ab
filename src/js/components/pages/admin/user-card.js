@@ -8,7 +8,7 @@ const UserCard = ({
         email,
         role: { name: role }
     },
-    onClick
+    onDelete
 }) => {
     return (
         <div className="card card-user">
@@ -17,10 +17,16 @@ const UserCard = ({
             <div className="card__field card__field-user">{email}</div>
             <div className="card__field card__field-user">{role}</div>
             <div className="card__field card__field-user">
-                <Button>edit</Button>
+                <Button
+                    className="button-link"
+                    navLink={true}
+                    to={`add-user/${username}`}
+                >
+                    edit
+                </Button>
             </div>
             <div className="card__field card__field-user">
-                <Button onClick={onClick}>delete</Button>
+                <Button onClick={onDelete}>delete</Button>
             </div>
         </div>
     );

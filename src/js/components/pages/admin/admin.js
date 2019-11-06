@@ -1,18 +1,21 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
 import User from "./user-card";
 import Title from "Components/title";
 import Button from "Components/button";
-import Loader from "Components/loader";
-import Link from "Components/link";
+import Loader from "Components/loader"
 import UserContext from "Utils/user-service-context";
 import { setHeaderTitle } from "Actions/actions";
+import Modal from "Components/modal-window";
 
 const Admin = () => {
     const us = useContext(UserContext);
     const dispatch = useDispatch();
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [modal, setModal] = useState(false);
+    const [deleteuser, setDeleteuser] = useState("");
     useEffect(() => {
         us.getUsers()
             .then(setUsers)
@@ -36,20 +39,32 @@ const Admin = () => {
 
     return (
         <section className="section admin-section">
+            <Modal
+                isOpen={modal}
+                onSubmit={() => {
+                    delUser(deleteuser);
+                    setModal(false);
+                }}
+                onCancel={() => {
+                    setModal(false);
+                }}
+                title="Confirm deleting user"
+            >
+                Remove user {deleteuser}?
+            </Modal>
             <div className="admin-section__header">
                 <Title className="title-admin">Users List</Title>
-                <Button>
-                    <Link href="/add-user" className="link-button">
-                        Add user
-                    </Link>
+                <Button to="/add-user" navLink={true} className="button-link">
+                    Add user 
                 </Button>
             </div>
             {users.map(user => (
                 <User
                     key={user.username}
                     user={user}
-                    onClick={() => {
-                        delUser(user.username);
+                    onDelete={() => {
+                        setModal(true);
+                        setDeleteuser(user.username);
                     }}
                 />
             ))}

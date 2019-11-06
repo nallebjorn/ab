@@ -4,7 +4,7 @@ import UserForm from "./add-user-form";
 import UserServiceContext from "Utils/user-service-context";
 import { setHeaderTitle } from "Actions/actions";
 
-const AddUser = () => {
+const AddUser = ({ match: { params: username } }) => {
     const dispatch = useDispatch();
     const us = useContext(UserServiceContext);
     const onSubmit = ({
@@ -17,18 +17,16 @@ const AddUser = () => {
         name,
         surname
     }) => {
-        const inputRole = JSON.parse(role);
         const newUser = {
             username,
             password,
             email,
             phone,
-            role: inputRole,
+            role: { id: role },
             address,
             name,
             surname
         };
-        console.log(newUser);
         us.addUser(newUser).then(user => {
             if (user) {
                 dispatch(
@@ -41,7 +39,7 @@ const AddUser = () => {
     };
     return (
         <section className="section admin-section">
-            <UserForm onSubmit={onSubmit} />
+            <UserForm onSubmit={onSubmit} user={username.username} />
         </section>
     );
 };

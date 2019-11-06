@@ -22,6 +22,7 @@ const Routing = () => {
                 <Switch>
                     <Route component={Admin} path="/" exact />
                     <Route component={AddUser} path="/add-user" exact />
+                    <Route component={AddUser} path="/add-user/:username" exact />
                     <Route component={Login} path="/login" />
                     <Route component={Logout} path="/logout" />
                     <Route component={About} path="/about" />

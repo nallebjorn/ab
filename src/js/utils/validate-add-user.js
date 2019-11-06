@@ -45,8 +45,7 @@ export default values => {
     }
 
     if (values.role) {
-        const role = JSON.parse(values.role);
-        if (role.name === "provider") {
+        if (values.role == 2) {
             if (!values.name) {
                 errors.name = "The field mustn't be empty.";
             } else if (!/^[a-zа-я]+/i.test(values.name)) {

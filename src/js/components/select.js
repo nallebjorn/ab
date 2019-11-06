@@ -8,7 +8,7 @@ const Select = ({ items, className, ...attrs }) => {
             <option></option>
             {items.length > 0
                 ? items.map(item => (
-                      <option value={JSON.stringify(item)} key={item.id}>
+                      <option value={item.id} key={item.id}>
                           {item.name}
                       </option>
                   ))

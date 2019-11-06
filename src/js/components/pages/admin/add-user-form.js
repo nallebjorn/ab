@@ -6,9 +6,9 @@ import roleService from "Services/role-service";
 import validate from "Utils/validate-add-user";
 import AddProvider from "./add-provider";
 
-const UserForm = ({ handleSubmit, onSubmit }) => {
+const UserForm = ({ handleSubmit, onSubmit, user }) => {
     const [roles, setRoles] = useState([]);
-    const [role, setRole] = useState({ id: 0, name: "none" });
+    const [role, setRole] = useState(0);
     useEffect(() => {
         new roleService().getRoles().then(roles => {
             setRoles(roles);
@@ -21,6 +21,7 @@ const UserForm = ({ handleSubmit, onSubmit }) => {
         }
         onSubmit(values);
     });
+    console.log(user);
     return (
         <form onSubmit={onSubmitHandler} autoComplete="off">
             <div className="add-user-form">
@@ -51,8 +52,7 @@ const UserForm = ({ handleSubmit, onSubmit }) => {
                 />
                 <Field
                     onChange={e => {
-                        const role = JSON.parse(e.target.value);
-                        setRole(role);
+                        setRole(e.target.value);
                     }}
                     items={roles}
                     select={true}
@@ -61,7 +61,7 @@ const UserForm = ({ handleSubmit, onSubmit }) => {
                     component={renderField}
                     placeholder="username"
                 />
-                {role.name === "provider" ? <AddProvider /> : null}
+                {role == 2 ? <AddProvider /> : null}
             </div>
             <Button
                 type="submit"
