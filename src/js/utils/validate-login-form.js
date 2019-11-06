@@ -6,7 +6,7 @@ export default values => {
         errors.username = "Must be 15 characters or less.";
     } else if (values.username.length < 4) {
         errors.username = "Must be 4 characters or more.";
-    } else if (!/^[a-z0-9]+/i.test(values.username)) {
+    } else if (!/^[a-z0-9]+$/i.test(values.username)) {
         errors.username = "The field is incorrect.";
     }
     if (!values.password) {
@@ -15,7 +15,7 @@ export default values => {
         errors.password = "Must be 15 characters or less.";
     } else if (values.password.length < 4) {
         errors.password = "Must be 4 characters or more.";
-    } else if (!/^[a-z0-9]+/i.test(values.password)) {
+    } else if (!/^[a-z0-9]+$/i.test(values.password)) {
         errors.password = "The field is incorrect.";
     }
     return errors;

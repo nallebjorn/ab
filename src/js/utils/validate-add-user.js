@@ -30,7 +30,7 @@ export default values => {
         errors.username = "Must be 15 characters or less.";
     } else if (values.username.length < 4) {
         errors.username = "Must be 4 characters or more.";
-    } else if (!/^[a-z0-9]+/i.test(values.username)) {
+    } else if (!/^[a-z0-9]+$/i.test(values.username)) {
         errors.username = "Username format is incorrect.";
     }
 
@@ -40,7 +40,7 @@ export default values => {
         errors.password = "Must be 15 characters or less.";
     } else if (values.password.length < 4) {
         errors.password = "Must be 4 characters or more.";
-    } else if (!/^[a-z0-9]+/i.test(values.password)) {
+    } else if (!/^[a-z0-9]+$/i.test(values.password)) {
         errors.password = "Password format is incorrect.";
     }
 
@@ -48,12 +48,12 @@ export default values => {
         if (values.role == 2) {
             if (!values.name) {
                 errors.name = "The field mustn't be empty.";
-            } else if (!/^[a-zа-я]+/i.test(values.name)) {
+            } else if (!/^[a-zа-я]+$/i.test(values.name)) {
                 errors.name = "Name format is incorrect.";
             }
             if (!values.surname) {
                 errors.surname = "The field mustn't be empty.";
-            } else if (!/^[a-zа-я]+/i.test(values.surname)) {
+            } else if (!/^[a-zа-я]+$/i.test(values.surname)) {
                 errors.surname = "Surname format is incorrect.";
             }
 

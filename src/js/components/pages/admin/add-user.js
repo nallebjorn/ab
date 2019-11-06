@@ -4,7 +4,7 @@ import UserForm from "./add-user-form";
 import UserServiceContext from "Utils/user-service-context";
 import { setHeaderTitle } from "Actions/actions";
 
-const AddUser = ({ match: { params: username } }) => {
+const AddUser = ({ match: { params: user } }) => {
     const dispatch = useDispatch();
     const us = useContext(UserServiceContext);
     const onSubmit = ({
@@ -27,19 +27,39 @@ const AddUser = ({ match: { params: username } }) => {
             name,
             surname
         };
-        us.addUser(newUser).then(user => {
-            if (user) {
-                dispatch(
-                    setHeaderTitle(`User ${user.username} added successfully.`)
-                );
-            } else {
-                dispatch(setHeaderTitle(`User ${newUser.username} not added.`));
-            }
-        });
+        if (!user.user) {
+            us.addUser(newUser).then(user => {
+                if (user) {
+                    dispatch(
+                        setHeaderTitle(
+                            `User ${user.username} added successfully.`
+                        )
+                    );
+                } else {
+                    dispatch(
+                        setHeaderTitle(`User ${newUser.username} not added.`)
+                    );
+                }
+            });
+        } else {
+            us.updateUser(user.user, newUser).then(done => {
+                if (done) {
+                    dispatch(
+                        setHeaderTitle(
+                            `User ${user.user} successfully updated.`
+                        )
+                    );
+                } else {
+                    dispatch(
+                        setHeaderTitle(`User ${user.user} not updated.`)
+                    );
+                }
+            });
+        }
     };
     return (
         <section className="section admin-section">
-            <UserForm onSubmit={onSubmit} user={username.username} />
+            <UserForm onSubmit={onSubmit} user={user.user} />
         </section>
     );
 };

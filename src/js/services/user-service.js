@@ -13,13 +13,27 @@ export default class {
         return body.data;
     };
 
+    updateUser = async (username, user) => {
+        const body = await axios.put(`${this.__apiBase}/users?username=${username}`, user);
+        return body.data;
+    };
+
     getUsers = async () => {
         const body = await axios.get(`${this.__apiBase}/users`);
         return body.data;
     };
 
-    deleteUser = async (username) => {
-        const body = await axios.delete(`${this.__apiBase}/users?username=${username}`);
+    getUser = async username => {
+        const body = await axios.get(
+            `${this.__apiBase}/users?username=${username}`
+        );
         return body.data;
-    }
+    };
+
+    deleteUser = async username => {
+        const body = await axios.delete(
+            `${this.__apiBase}/users?username=${username}`
+        );
+        return body.data;
+    };
 }
