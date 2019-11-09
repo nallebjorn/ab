@@ -58,7 +58,7 @@ const AddUser = ({ match: { params: user } }) => {
         }
     };
     return (
-        <section className="section admin-section">
+        <section className="section user-section">
             <UserForm onSubmit={onSubmit} user={user.user} />
         </section>
     );

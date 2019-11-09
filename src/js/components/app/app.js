@@ -5,7 +5,6 @@ import Header from "./../header";
 import Loader from "./../loader";
 
 const App = () => {
-    const state = useSelector(state => state);
     const { loading } = useSelector(state => state.app);
     return (
         <React.Fragment>

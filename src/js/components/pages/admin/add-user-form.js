@@ -4,7 +4,7 @@ import Button from "Components/button";
 import { Field, reduxForm, SubmissionError, initialize } from "redux-form";
 import { renderField } from "Components/render-field";
 import Loader from "Components/loader";
-import roleService from "Services/role-service";
+import getRoles from "Services/select-service";
 import userService from "Services/user-service";
 import validate from "Utils/validate-add-user";
 import AddProvider from "./add-provider";
@@ -15,9 +15,7 @@ const UserForm = ({ handleSubmit, onSubmit, user }) => {
     const [role, setRole] = useState(0);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        new roleService().getRoles().then(roles => {
-            setRoles(roles);
-        });
+        getRoles("roles").then(setRoles);
         if (user) {
             new userService().getUser(user).then(user => {
                 setRole(user.role.id);
@@ -45,49 +43,51 @@ const UserForm = ({ handleSubmit, onSubmit, user }) => {
 
     return (
         <form onSubmit={onSubmitHandler} autoComplete="off">
-            <div className="add-user-form">
+            <div className="form-wrapper">
                 Username
                 <Field
                     name="username"
                     component={renderField}
                     placeholder="username"
-                    className="add-user-form__field"
+                    className="form__field"
                 />
                 Password
                 <Field
                     name="password"
                     component={renderField}
                     placeholder="password"
-                    className="add-user-form__field"
+                    className="form__field"
                 />
                 Email
                 <Field
                     name="email"
                     type="email"
                     component={renderField}
-                    className="add-user-form__field"
+                    className="form__field"
                     placeholder="email@mail.com"
                 />
                 Phone
                 <Field
                     name="phone"
                     component={renderField}
-                    className="add-user-form__field"
+                    className="form__field"
                     placeholder="phone"
                 />
-                {!user && (<>
-                Role
-                    <Field
-                        onChange={e => {
-                            setRole(e.target.value);
-                        }}
-                        items={roles}
-                        select={true}
-                        className="add-user-form__field"
-                        name="role"
-                        component={renderField}
-                        placeholder="username"
-                    /></>
+                {!user && (
+                    <>
+                        Role
+                        <Field
+                            onChange={e => {
+                                setRole(e.target.value);
+                            }}
+                            items={roles}
+                            select={true}
+                            className="form__field"
+                            name="role"
+                            component={renderField}
+                            placeholder="username"
+                        />
+                    </>
                 )}
                 {role == 2 ? <AddProvider /> : null}
             </div>

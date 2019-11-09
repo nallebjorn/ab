@@ -32,7 +32,7 @@
         text-shadow: none;
     }
 
-    &-admin {
+    &-user {
         @media screen and (max-width: $tableWidth) {
             text-align: center;
         }
@@ -72,6 +72,11 @@
         background: $input-background;
         border: 2px solid $neutral-primary;
         box-shadow: 0 0 5px 6px $shadow;
+    }
+
+    &-file {
+        display: none;
+        visibility: hidden;
     }
 }
 

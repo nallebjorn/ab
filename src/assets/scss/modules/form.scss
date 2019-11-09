@@ -1,0 +1,55 @@
+.form {
+    &-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__field {
+        margin: rem(8) 0;
+        width: 290px;
+        option {
+            width: 290px;
+        }
+    }
+
+    &__file-item {
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        padding: 7px;
+        margin-top: 3px;
+        width: 290px;
+        border: 2px solid $neutral-primary;
+
+        &-left {
+            display: flex;
+            align-items: center;
+
+            .icon-clip {
+                margin-right: 15px;
+                font-size: 30px;
+            }
+        }
+
+        &-right {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            .icon-trash-o {
+                margin-right: 5px;
+            }
+
+            cursor: pointer;
+        }
+
+        &-name {
+            max-width: 175px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+}

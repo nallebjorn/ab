@@ -10,6 +10,7 @@ import Provider from "./pages/provider";
 import Logout from "./pages/logout";
 import Profile from "./pages/profile/";
 import AddUser from "./pages/admin/add-user";
+import AddSpare from "./pages/provider/add-spare";
 
 const Routing = () => {
     let role = useSelector(state => state.app.user.role);
@@ -45,6 +46,7 @@ const Routing = () => {
             return (
                 <Switch>
                     <Route component={Provider} path="/" exact />
+                    <Route component={AddSpare} path="/spare" />
                     <Route component={Login} path="/login" />
                     <Route component={Logout} path="/logout" />
                     <Route component={About} path="/about" />

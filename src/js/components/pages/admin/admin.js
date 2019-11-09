@@ -38,7 +38,7 @@ const Admin = () => {
     };
 
     return (
-        <section className="section admin-section">
+        <section className="section user-section">
             <Modal
                 isOpen={modal}
                 onSubmit={() => {
@@ -52,8 +52,8 @@ const Admin = () => {
             >
                 Remove user {deleteuser}?
             </Modal>
-            <div className="admin-section__header">
-                <Title className="title-admin">Users List</Title>
+            <div className="user-section__header">
+                <Title className="title-user">Users List</Title>
                 <Button to="/add-user" navLink={true} className="button-link">
                     Add user 
                 </Button>
