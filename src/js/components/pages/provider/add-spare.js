@@ -1,11 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import uuid from "uuid";
 import SpareForm from "./add-spare-form";
 import SpareService from "Services/spare-service";
+import { setHeaderTitle } from "Actions/actions";
 
 const AddSpare = () => {
     const providerId = useSelector(state => state.app.user.id);
-    const onSubmit = ({
+    const dispatch = useDispatch();
+    const onSubmit = async ({
         category,
         carMark,
         name,
@@ -15,6 +18,7 @@ const AddSpare = () => {
         files
     }) => {
         const newSpare = {
+            id: uuid(),
             category: { id: category },
             carMark: { id: carMark },
             provider: { id: providerId },
@@ -24,8 +28,12 @@ const AddSpare = () => {
             vin,
             images: files
         };
-        console.log(newSpare)
-        new SpareService().addSpare(newSpare).then(console.log).catch(console.log);
+        const added = await new SpareService().addSpare(newSpare);
+        if (added) {
+            dispatch(setHeaderTitle("Spare added successfully."));
+        } else {
+            dispatch(setHeaderTitle("Spare not added."));
+        }
     };
     return (
         <section className="section user-section">

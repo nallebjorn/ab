@@ -105,6 +105,6 @@ const init = {
         }
     }
 };
-const store = createStore(rootReducer, init, applyMiddleware(Thunk));
+const store = createStore(rootReducer, applyMiddleware(Thunk));
 
 export default store;
