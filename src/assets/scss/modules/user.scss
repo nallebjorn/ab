@@ -10,6 +10,15 @@
                 font-weight: 500;
             }
         }
+
+        &__filters {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &__filter {
+            padding: 10px;
+        }
     }
 }
 

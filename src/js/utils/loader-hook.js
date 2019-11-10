@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
-const useLoader = action => {
+const useLoader = (action, ...actionParams) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     async function loadData() {
         try {
             setLoading(true);
-            const actionData = await action();
+            const actionData = await action(...actionParams);
             setData(actionData);
             setLoading(false);
         } catch (e) {
