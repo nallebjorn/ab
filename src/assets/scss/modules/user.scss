@@ -12,3 +12,23 @@
         }
     }
 }
+
+.field {
+    font-size: 22px;
+    font-weight: 500;
+
+    &__value {
+        font-size: 18px;
+        font-weight: 400;
+        margin-left: 20px;
+    }
+}
+
+.fields {
+    padding: 0 20px;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+}

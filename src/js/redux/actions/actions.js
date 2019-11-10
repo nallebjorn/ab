@@ -55,3 +55,11 @@ export const userLoginingIn = () => {
         type: USER_LOGINING_IN
     };
 };
+
+export const SET_SPARES = "SET_SPARES";
+export const setSpares = spares => {
+    return {
+        type: SET_SPARES,
+        payload: spares
+    };
+};

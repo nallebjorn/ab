@@ -11,6 +11,7 @@ import Logout from "./pages/logout";
 import Profile from "./pages/profile/";
 import AddUser from "./pages/admin/add-user";
 import AddSpare from "./pages/provider/add-spare";
+import Spare from "../components/spare";
 
 const Routing = () => {
     let role = useSelector(state => state.app.user.role);
@@ -51,6 +52,7 @@ const Routing = () => {
                     <Route component={Logout} path="/logout" />
                     <Route component={About} path="/about" />
                     <Route component={Profile} path="/profile" />;
+                    <Route component={Spare} path="/:id" />
                     <Route component={NotFound} />
                 </Switch>
             );

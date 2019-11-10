@@ -52,7 +52,11 @@ const reducer = (state = initialState, action) => {
                 error: true,
                 errorMessage: payload
             };
-
+        case Actions.SET_SPARES:
+            return {
+                ...state,
+                spares: payload
+            };
         default:
             return state;
     }
