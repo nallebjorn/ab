@@ -48,7 +48,8 @@ const Routing = () => {
             return (
                 <Switch>
                     <Route component={Provider} path="/" exact />
-                    <Route component={AddSpare} path="/spare" />
+                    <Route component={AddSpare} path="/spare/:id" exact/>
+                    <Route component={AddSpare} path="/spare" exact/>
                     <Route component={Login} path="/login" />
                     <Route component={Logout} path="/logout" />
                     <Route component={About} path="/about" />

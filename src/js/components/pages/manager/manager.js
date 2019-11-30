@@ -51,6 +51,9 @@ const Manager = () => {
             </div>
             <div className="user-section__filters">
                 <div className="user-section__filter">
+
+                </div>
+                <div className="user-section__filter">
                     Category:{" "}
                     <Select
                         style={{ width: "250px" }}

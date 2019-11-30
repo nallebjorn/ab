@@ -21,4 +21,9 @@ export default class {
         const body = await axios.get(`${__apibase}/spares`);
         return body.data;
     }
+
+    removeSpare = async (id) => {
+        const body = await axios.delete(`${__apibase}/spares/${id}`);
+        return body.data;
+    }
 }
