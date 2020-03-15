@@ -6,8 +6,6 @@ import Loader from "./../loader";
 
 const App = () => {
     const { loading } = useSelector(state => state.app);
-    const state = useSelector(state => state);
-    console.log(state);
     return (
         <React.Fragment>
             <Header />

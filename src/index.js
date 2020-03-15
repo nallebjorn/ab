@@ -8,6 +8,9 @@ import App from "./js/components/app";
 import UserContext from "Utils/user-service-context";
 import UserService from "./js/services/user-service";
 
+import "./../node_modules/slick-carousel/slick/slick.scss";
+import "./../node_modules/slick-carousel/slick/slick-theme.scss";
+
 const Idx = () => {
     return (
         <Provider store={store}>

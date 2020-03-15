@@ -40,4 +40,24 @@
 .slider {
     display: flex;
     justify-content: center;
+
+    &-wrapper {
+        height: 520px;
+        width: 800px;
+    }
+
+    &-img {
+        height: 520px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            min-height: 100%;
+        }
+    }
+    // display: flex;
+    // justify-content: center;
 }

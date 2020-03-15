@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SimpleImageSlider from "react-simple-image-slider";
+import Slider from "react-slick";
 import Button from "Components/button";
 import Loader from "Components/loader";
 import Modal from "Components/modal-window";
@@ -20,6 +21,14 @@ const Spare = ({
         return <Loader />;
     }
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
     const {
         carMark,
         category,
@@ -35,13 +44,15 @@ const Spare = ({
             <>
                 <section className="section user-section">
                     <div className="slider">
-                        <SimpleImageSlider
-                            width={600}
-                            height={600}
-                            images={images.map(img => ({
-                                url: imgBase + img.url
-                            }))}
-                        />
+                        <div className="slider-wrapper">
+                            <Slider>
+                                {images.map(img => (
+                                    <div className="slider-img">
+                                        <img src={imgBase + img.url} alt="g" />
+                                    </div>
+                                ))}
+                            </Slider>
+                        </div>
                     </div>
                     <div className="fields">
                         <div className="field">

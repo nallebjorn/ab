@@ -49,33 +49,6 @@ const Manager = () => {
             <div className="user-section__header">
                 <Title className="title-user">Spares List</Title>
             </div>
-            <div className="user-section__filters">
-                <div className="user-section__filter">
-
-                </div>
-                <div className="user-section__filter">
-                    Category:{" "}
-                    <Select
-                        style={{ width: "250px" }}
-                        items={categories}
-                        value={category}
-                        onChange={({ target: { value } }) => {
-                            setCategory(value);
-                        }}
-                    />
-                </div>
-                <div className="user-section__filter">
-                    Car mark:{" "}
-                    <Select
-                        style={{ width: "250px" }}
-                        items={carMarks}
-                        value={carMark}
-                        onChange={({ target: { value } }) => {
-                            setCarMark(value);
-                        }}
-                    />
-                </div>
-            </div>
             {loading ? <Loader /> : <Spares spares={filtredSpares} />}
         </section>
     );

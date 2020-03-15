@@ -1,24 +1,41 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useParams } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { reduxForm, SubmissionError, Field } from "redux-form";
 import uuid from "uuid";
 import { renderField } from "Components/render-field";
 import Button from "Components/button";
 import getSelectItems from "Services/select-service";
+import spare from "Services/spare-service";
 import validate from "Utils/validate-spare";
 import toBase64 from "Utils/encodeBase64";
 import { Files } from "./elements";
+import Axios from "axios";
 
 const ACCEPT_FILE_EXTENSIONS = [".png", ".jpeg", ".jpg", ".svg"];
 
-const AddSpareForm = ({ handleSubmit, onSubmit }) => {
+const AddSpareForm = props => {
+    const { handleSubmit, onSubmit, id, initialize } = props;
+    // console.log(initialize({name: "eblan"}));
+    const [files, setFiles] = useState([]);
     const [categories, setCategories] = useState([]);
     const [carMarks, setCarMarks] = useState([]);
-    const [files, setFiles] = useState([]);
 
     useEffect(() => {
         getSelectItems("categories").then(setCategories);
         getSelectItems("marks").then(setCarMarks);
+    }, []);
+
+    useEffect(() => {
+        if (id) {
+            new spare().getSpare(id).then(res => {
+                initialize({
+                    ...res,
+                    category: res.category.id,
+                    carMark: res.carMark.id
+                });
+            });
+        }
     }, []);
 
     const onSubmitHandler = handleSubmit(async values => {
@@ -26,7 +43,7 @@ const AddSpareForm = ({ handleSubmit, onSubmit }) => {
         if (Object.keys(errors).length !== 0) {
             throw new SubmissionError(errors);
         }
-        onSubmit({...values, files});
+        onSubmit({ ...values, files });
     });
 
     const onFileAttach = input => {
@@ -41,7 +58,7 @@ const AddSpareForm = ({ handleSubmit, onSubmit }) => {
                     size: file.size
                 };
                 newFiles.push(newFile);
-                setFiles([...files, ...newFiles])
+                setFiles([...files, ...newFiles]);
             });
         });
     };
